@@ -15,7 +15,6 @@ const express = require("express"),
 	nodemailer = require("nodemailer"),
 	inlineBase64 = require("nodemailer-plugin-inline-base64"),
 	// Brandon's stuff
-	morgan = require("morgan"),
 	mongoose = require("mongoose");
 // End of Brandon's stuff
 
@@ -24,7 +23,6 @@ app.use(helmet());
 
 // Brandon's Fun Stuff
 
-// debug && app.use(morgan("dev"));
 mongoose.Promise = global.Promise;
 mongoose.set("useFindAndModify", false);
 mongoose.connect(process.env.MONGO_URL, {

@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Firebird1029/GradLei/issues"
   },
-  "homepage": "https://github.com/Firebird1029/GradLei#readme"
+  "homepage": "https://github.com/Firebird1029/GradLei#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "mongoose": "^5.9.16",
+    "socket.io": "^2.3.0"
+  }
 }
