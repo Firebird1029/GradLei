@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Gradlei</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css" type="text/css">
+	<link href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="u-full-width">
+				<h3>New Grad Information Drive-Thru</h3>
+			</div>
+		</div>
+
+
+
+		<!-- Form Section -->
+		<!-- https://codepen.io/lucasyem/pen/ZEEYKdj -->
+		<!-- https://codepen.io/giana/full/xdXpJB -->
+		<form action="" id="newGradForm">
+			<div class="row">
+				<div class="three columns">
+					<div class="form__group field">
+					  <input type="input" class="form__field" placeholder="Name" name="formName" id="formName" required />
+					  <label for="formName" class="form__label">Name</label>
+					</div>
+				</div>
+				<div class="five columns">
+					<div class="form__group field">
+					  <input type="input" class="form__field" placeholder="Address" name="formAddr" id="formAddr" required />
+					  <label for="formAddr" class="form__label">Address</label>
+					</div>
+				</div>
+				<div class="two columns">
+					<div class="form__group field">
+					  <input type="input" class="form__field" placeholder="Address" name="formTime" id="formTime" required />
+					  <label for="formTime" class="form__label">Date + Time</label>
+					</div>
+				</div>
+				<div class="two columns">
+					<!-- <p>Submit</p> -->
+					<div style="text-align: left;">
+						<button class="btn draw-border" style="margin-top: 1rem;">Add</button>
+					</div>
+					<!-- <input type="submit" name="submit"> -->
+				</div>
+			</div>
+		</form>
+
+
+
+
+
+
+
+
+		<!-- Table Section -->
+		<div class="container">
+			<table class="u-full-width" id="infoTable">
+				<tr id="infoHead">
+					<th class="nameCol">Name</th>
+					<th class="addressCol">Address</th>
+					<th class="timeCol">Date/Time</th>
+				</tr>
+				<tr>
+					<td class="nameCol">Nick</td>
+					<td class="addressCol">100 North Pole</td>
+					<td class="timeCol">12/25/20 12:00AM</td>
+				</tr>
+			</table>
+		</div>
+
+
+
+
+
+		<!-- Open Layers Section -->
+		<div id="map" class="map"></div>
+
+
+
+
+
+
+		<!-- Footer -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
+    	<script src="confetti.min.js"></script>
+		<script src="script.js"></script>
+		<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHqKwHID0GXuubBlptFp5C8FKyhR2LSYw&callback=initMap"></script> -->
+	</div>
+</body>
+</html>
