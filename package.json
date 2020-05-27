@@ -1,0 +1,19 @@
+{
+  "name": "gradlei",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Firebird1029/GradLei.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Firebird1029/GradLei/issues"
+  },
+  "homepage": "https://github.com/Firebird1029/GradLei#readme"
+}
