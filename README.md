@@ -1,2 +1,0 @@
-# dailycode
-A real mess
