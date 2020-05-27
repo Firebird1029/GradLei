@@ -11,15 +11,86 @@ const express = require("express"),
 	),
 	helmet = require("helmet"),
 	io = require("socket.io"),
-	listener = io.listen(server);
+	listener = io.listen(server),
+	jsonfile = require("jsonfile"),
+	_ = require("lodash");
 
 app.use(express.static("public"));
 app.use(helmet());
 
+// Data
+const dataFile = "data.json";
+
 // Socket.io Control
-listener.sockets.on("connection", function connectionDetected(socket) {
-	socket.on("refreshRequest", function processRefreshRequest(options) {
-		socket.emit("refreshResponse", {});
+listener.sockets.on("connection", (socket) => {
+	// send back data
+	socket.on("refreshRequest", (clientID) => {
+		jsonfile
+			.readFile(dataFile)
+			.then((currentData) => {
+				let newData = _.cloneDeep(currentData);
+
+				socket.emit("refreshResponse", {
+					filteredRecords: newData.records.filter(
+						(record) => record.clientID === clientID
+					),
+				});
+			})
+			.catch((error) => console.error(error));
+	});
+
+	// on form submit
+	socket.on("formSubmit", (formData) => {
+		jsonfile
+			.readFile(dataFile)
+			.then((currentData) => {
+				let newData = _.cloneDeep(currentData);
+				newData.records.push(formData);
+
+				jsonfile
+					.writeFile(dataFile, newData)
+					.then((res) => {
+						// refresh response
+						socket.emit("refreshResponse", {
+							filteredRecords: newData.records.filter(
+								(record) =>
+									record.clientID === formData.clientID
+							),
+						});
+					})
+					.catch((error) => console.error(error));
+			})
+			.catch((error) => console.error(error));
+	});
+
+	socket.on("deleteRecord", (recordInfo) => {
+		jsonfile
+			.readFile(dataFile)
+			.then((currentData) => {
+				let newData = _.cloneDeep(currentData);
+				newData.records = newData.records.filter(
+					(record) =>
+						!(
+							record.clientID === recordInfo.clientID &&
+							record.fornName === recordInfo.fornName &&
+							record.formAddr === recordInfo.formAddr &&
+							record.formTime === recordInfo.formTime
+						)
+				);
+
+				jsonfile
+					.writeFile(dataFile, newData)
+					.then((res) => {
+						// refresh response
+						socket.emit("refreshResponse", {
+							filteredRecords: newData.records.filter(
+								(record) =>
+									record.clientID === recordInfo.clientID
+							),
+						});
+					})
+					.catch((error) => console.error(error));
+			})
+			.catch((error) => console.error(error));
 	});
 });
-
